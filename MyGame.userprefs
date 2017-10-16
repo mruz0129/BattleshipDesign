@@ -5,21 +5,21 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\Model\AIHardPlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\Model\BattleShipsGame.cs">
     <Files>
       <File FileName="src\DeploymentController.cs" Line="202" Column="4" />
       <File FileName="src\MenuController.cs" Line="297" Column="3" />
       <File FileName="src\GameController.cs" Line="310" Column="14" />
       <File FileName="src\DiscoveryController.cs" Line="74" Column="129" />
       <File FileName="src\Model\AIPlayer.cs" Line="122" Column="7" />
-      <File FileName="src\Model\BattleShipsGame.cs" Line="99" Column="18" />
+      <File FileName="src\Model\BattleShipsGame.cs" Line="110" Column="2" />
       <File FileName="src\Model\Direction.cs" Line="11" Column="15" />
       <File FileName="src\Model\Player.cs" Line="258" Column="4" />
       <File FileName="src\Model\SeaGrid.cs" Line="194" Column="5" />
       <File FileName="src\EndingGameController.cs" Line="47" Column="2" />
       <File FileName="src\GameLogic.cs" Line="14" Column="3" />
       <File FileName="src\GameResources.cs" Line="301" Column="2" />
-      <File FileName="src\Model\AIHardPlayer.cs" Line="10" Column="85" />
+      <File FileName="src\Model\AIHardPlayer.cs" Line="29" Column="44" />
       <File FileName="src\Model\AIMediumPlayer.cs" Line="1" Column="1" />
       <File FileName="src\Model\AIOption.cs" Line="1" Column="1" />
       <File FileName="src\Model\AttackResult.cs" Line="89" Column="16" />
@@ -31,8 +31,9 @@
       <File FileName="src\Model\Tile.cs" Line="153" Column="2" />
       <File FileName="src\Model\TileView.cs" Line="34" Column="5" />
       <File FileName="src\GameState.cs" Line="47" Column="13" />
-      <File FileName="src\HighScoreController.cs" Line="36" Column="20" />
+      <File FileName="src\HighScoreController.cs" Line="197" Column="2" />
       <File FileName="src\UtilityFunctions.cs" Line="250" Column="19" />
+      <File FileName="Resources\highscores.txt" Line="11" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />

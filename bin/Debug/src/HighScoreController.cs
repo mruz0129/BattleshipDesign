@@ -14,8 +14,6 @@ using SwinGameSDK;
 /// </remarks>
 static class HighScoreController
 {
-	private const int NAME_WIDTH = 3;
-
 	private const int SCORES_LEFT = 490;
 	/// <summary>
 	/// The score structure is used to keep the name and
@@ -64,22 +62,20 @@ static class HighScoreController
 		input = new StreamReader(filename);
 
 		//Read in the # of scores
-		int numScores = 0;
-		numScores = Convert.ToInt32(input.ReadLine());
+		string [] tempNameValuePair;
+		string tempInput;
+		char [] commaSeparator = new char [] { ',' };
 
-		_Scores.Clear();
+		_Scores.Clear ();
+		Score s = default (Score);
 
-		int i = 0;
-
-		for (i = 1; i <= numScores; i++) {
-			Score s = default(Score);
-			string line = null;
-
-			line = input.ReadLine();
-
-			s.Name = line.Substring(0, NAME_WIDTH);
-			s.Value = Convert.ToInt32(line.Substring(NAME_WIDTH));
-			_Scores.Add(s);
+		while ((tempInput = input.ReadLine()) != null) {
+			tempNameValuePair = tempInput.Split (commaSeparator, StringSplitOptions.None);
+			for (int i = 1; i<tempNameValuePair.Length; i++) {
+				s.Name = tempNameValuePair [0];
+				s.Value = Convert.ToInt32 (tempNameValuePair [1]);
+				_Scores.Add (s);
+			}
 		}
 		input.Close();
 	}
@@ -105,7 +101,7 @@ static class HighScoreController
 		output.WriteLine(_Scores.Count);
 
 		foreach (Score s in _Scores) {
-			output.WriteLine(s.Name + s.Value);
+			output.WriteLine(s.Name +','+ s.Value);
 		}
 
 		output.Close();
@@ -176,7 +172,7 @@ static class HighScoreController
 			int x = 0;
 			x = SCORES_LEFT + SwinGame.TextWidth(GameResources.GameFont("Courier"), "Name: ");
 
-			SwinGame.StartReadingText(Color.White, NAME_WIDTH, GameResources.GameFont("Courier"), x, ENTRY_TOP);
+			SwinGame.StartReadingText(Color.White, 10000, GameResources.GameFont("Courier"), x, ENTRY_TOP);
 
 			//Read the text from the user
 			while (SwinGame.ReadingText()) {
@@ -190,13 +186,10 @@ static class HighScoreController
 
 			s.Name = SwinGame.TextReadAsASCII();
 
-			if (s.Name.Length < 3) {
-				s.Name = s.Name + new string(Convert.ToChar(" "), 3 - s.Name.Length);
-			}
-
 			_Scores.RemoveAt(_Scores.Count - 1);
 			_Scores.Add(s);
 			_Scores.Sort();
+			SaveScores ();
 
 			GameController.EndCurrentState();
 		}
