@@ -20,6 +20,9 @@ public static class GameController
 
 	private static Stack<GameState> _state = new Stack<GameState>();
 
+	//This is where the value enemy's remaining ships being stored. 
+	public static int remainingShip = 5;
+
 	private static AIOption _aiSetting;
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
@@ -170,9 +173,15 @@ public static class GameController
 		switch (result.Value)
 		{
 			case ResultOfAttack.Destroyed:
-				PlayHitSequence(result.Row, result.Column, isHuman);
-				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
-
+				//Decrease the remainingShip value when a ship is destroyed by Player.
+				if (isHuman) {
+                	PlayHitSequence (result.Row, result.Column, isHuman);
+					Audio.PlaySoundEffect (GameResources.GameSound ("Sink"));
+					remainingShip--;
+				} else { 
+					PlayHitSequence (result.Row, result.Column, isHuman);
+					Audio.PlaySoundEffect (GameResources.GameSound ("Sink"));
+				}
 				break;
 			case ResultOfAttack.GameOver:
 				PlayHitSequence(result.Row, result.Column, isHuman);
