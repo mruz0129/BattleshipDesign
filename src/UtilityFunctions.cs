@@ -243,27 +243,32 @@ static class UtilityFunctions
 
 	public static void DrawBackground()
 	{
-		switch (GameController.CurrentState)
-		{
-			case GameState.ViewingMainMenu:
-			case GameState.ViewingGameMenu:
-			case GameState.AlteringSettings:
-			case GameState.ViewingHighScores:
-				SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
-				break;
-			case GameState.Discovering:
-			case GameState.EndingGame:
-				SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
-				break;
-			case GameState.Deploying:
-				SwinGame.DrawBitmap(GameResources.GameImage("Deploy"), 0, 0);
-				break;
-			default:
-				SwinGame.ClearScreen();
-				break;
-		}
+        switch (GameController.CurrentState)
+        {
+            case GameState.ViewingMainMenu:
+            case GameState.ViewingGameMenu:
+            case GameState.AlteringSettings:
+            case GameState.ViewingHighScores:
+                SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
+                break;
+            case GameState.Discovering:
+                SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
+                break;
+            case GameState.ViewHowToPlay:
+                SwinGame.DrawBitmap(GameResources.GameImage("HowToPlay"), 0, 0);
+                break;
+            case GameState.EndingGame:
+                SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
+                break;
+            case GameState.Deploying:
+                SwinGame.DrawBitmap(GameResources.GameImage("Deploy"), 0, 0);
+                break;
+            default:
+                SwinGame.ClearScreen();
+                break;
+        }
 
-		SwinGame.DrawFramerate(675, 585, GameResources.GameFont("CourierSmall"));
+        SwinGame.DrawFramerate(675, 585, GameResources.GameFont("CourierSmall"));
 	}
 
 	public static void AddExplosion(int row, int col)

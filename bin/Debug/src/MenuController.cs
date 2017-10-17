@@ -25,7 +25,8 @@ static class MenuController
 			"PLAY",
 			"SETUP",
 			"SCORES",
-			"QUIT"
+            "HOWTOPLAY",
+            "QUIT"
 		},
 		new string[] {
 			"RETURN",
@@ -49,13 +50,15 @@ static class MenuController
 	private const int TEXT_OFFSET = 0;
 	private const int MAIN_MENU = 0;
 	private const int GAME_MENU = 1;
+    private const int HOWTOPLAY_MENU = 2;
 
-	private const int SETUP_MENU = 2;
+    private const int SETUP_MENU = 2;
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
+    private const int MAIN_MENU_HOWTOPLAY_BUTTON = 3;
 
-	private const int MAIN_MENU_QUIT_BUTTON = 3;
+    private const int MAIN_MENU_QUIT_BUTTON = 4;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
@@ -89,13 +92,22 @@ static class MenuController
 		}
 	}
 
-	/// <summary>
-	/// Handle input in the game menu.
-	/// </summary>
-	/// <remarks>
-	/// Player can return to the game, surrender, or quit entirely
-	/// </remarks>
-	public static void HandleGameMenuInput()
+    public static void HandleHowToPlayMenuInput()
+    {
+        bool handled = false;
+        handled = HandleMenuInput(HOWTOPLAY_MENU, 1, 4);
+
+        if (!handled)
+            HandleMenuInput(MAIN_MENU, 0, 0);
+    }
+
+    /// <summary>
+    /// Handle input in the game menu.
+    /// </summary>
+    /// <remarks>
+    /// Player can return to the game, surrender, or quit entirely
+    /// </remarks>
+    public static void HandleGameMenuInput()
 	{
 		HandleMenuInput(GAME_MENU, 0, 0);
 	}
@@ -269,7 +281,10 @@ static class MenuController
 			case MAIN_MENU_TOP_SCORES_BUTTON:
 			GameController.AddNewState(GameState.ViewingHighScores);
 				break;
-			case MAIN_MENU_QUIT_BUTTON:
+            case MAIN_MENU_HOWTOPLAY_BUTTON:
+                GameController.AddNewState(GameState.ViewHowToPlay);
+                break;
+            case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
 				break;
 		}

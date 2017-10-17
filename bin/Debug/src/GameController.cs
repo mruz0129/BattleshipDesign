@@ -312,7 +312,10 @@ public static class GameController
 			case GameState.Discovering:
 				DiscoveryController.HandleDiscoveryInput();
 				break;
-			case GameState.EndingGame:
+            case GameState.ViewHowToPlay:
+                MenuController.HandleHowToPlayMenuInput();
+                break;
+            case GameState.EndingGame:
 				EndingGameController.HandleEndOfGameInput();
 				break;
 			case GameState.ViewingHighScores:

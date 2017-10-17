@@ -367,3 +367,4 @@ C:\BattleshipDesign\bin\Debug\normnfkc.nlp
 C:\BattleshipDesign\bin\Debug\normnfkd.nlp
 C:\BattleshipDesign\obj\x86\Debug-Windows\MyGame.csprojResolveAssemblyReference.cache
 C:\BattleshipDesign\obj\x86\Debug-Windows\MyGame.exe
+C:\Users\ckknot\Desktop\Swinburne\new\BattleshipDesign\obj\x86\Debug-Windows\MyGame.g.resources
