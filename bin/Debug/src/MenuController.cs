@@ -26,6 +26,7 @@ static class MenuController
 			"SETUP",
 			"SCORES",
             "HOWTOPLAY",
+			"CLICK ME!",
             "QUIT"
 		},
 		new string[] {
@@ -57,8 +58,8 @@ static class MenuController
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
     private const int MAIN_MENU_HOWTOPLAY_BUTTON = 3;
-
-    private const int MAIN_MENU_QUIT_BUTTON = 4;
+	private const int MAIN_MENU_MUSIC_BUTTON = 4; //TRYING TO ADD MUSIC BUTTON INTO MAIN MENU
+    private const int MAIN_MENU_QUIT_BUTTON = 5;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
@@ -121,6 +122,32 @@ static class MenuController
 	/// <returns>false if a clicked missed the buttons. This can be used to check prior menus.</returns>
 	private static bool HandleMenuInput(int menu, int level, int xOffset)
 	{
+		//generate random number to randomize the music switching
+		int numero = DiscoveryController.RandNum (0, 4);
+		string song = "";
+
+		switch (numero) {
+		case 0:
+			song = "Background_3"; //music 1 - ACDC
+			break;
+		case 1:
+			song = "Background_1"; //music 3 - Boom Boom
+			break;
+		case 2:
+			song = "Background_2"; //music 2 - Bang Bang
+			break;
+		case 3:
+			song = "Background_0";//music 0 - dark music
+			break;
+		}
+
+
+		//controlling music with 'M' key
+		if (SwinGame.KeyTyped (KeyCode.vk_m)) {
+
+			SwinGame.PlayMusic (GameResources.GameMusic (song)); //using random number to switch between music
+		}
+
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.EndCurrentState();
 			return true;
@@ -284,6 +311,9 @@ static class MenuController
             case MAIN_MENU_HOWTOPLAY_BUTTON:
                 GameController.AddNewState(GameState.ViewHowToPlay);
                 break;
+			case MAIN_MENU_MUSIC_BUTTON:
+				GameController.Music ();
+				break;
             case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
 				break;

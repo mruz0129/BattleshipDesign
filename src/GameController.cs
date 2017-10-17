@@ -102,6 +102,34 @@ public static class GameController
 	}
 
 	/// <summary>
+	/// Implementing music changing through a button in the main menu
+	/// </summary>
+	public static void Music ()
+	{
+		//generate random number to randomize the music switching
+		int numero = DiscoveryController.RandNum (0, 4);
+		string song = "";
+
+		switch (numero) {
+		case 0:
+			song = "Background_3"; //music 1 - ACDC
+			break;
+		case 1:
+			song = "Background_1"; //music 3 - Boom Boom
+			break;
+		case 2:
+			song = "Background_2"; //music 2 - Bang Bang
+			break;
+		case 3:
+			song = "Background_0";//music 0 - dark music
+			break;
+		}
+
+
+			SwinGame.PlayMusic (GameResources.GameMusic (song)); //using random button to switch between music
+	}
+
+	/// <summary>
 	/// Stops listening to the old game once a new game is started
 	/// </summary>
 

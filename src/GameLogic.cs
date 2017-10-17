@@ -15,8 +15,7 @@ static class GameLogic
 		//Load Resources
 		GameResources.LoadResources ();
 
-		SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
-
+		SwinGame.PlayMusic (GameResources.GameMusic ("Background_1"));
 		//Game Loop
 		do {
 			GameController.HandleUserInput ();

@@ -10,7 +10,11 @@ using SwinGameSDK;
 /// </summary>
 static class DiscoveryController
 {
-
+	public static int RandNum (int min, int max)
+	{
+		Random rnd = new Random ();
+		return rnd.Next (min, max);
+	}
 	/// <summary>
 	/// Handles input during the discovery phase of the game.
 	/// </summary>
@@ -20,6 +24,32 @@ static class DiscoveryController
 	/// </remarks>
 	public static void HandleDiscoveryInput()
 	{
+		//generate random number to randomize the music switching
+		int numero = RandNum (0, 4);
+		string song = "";
+
+		switch (numero) {
+		case 0: 
+			song = "Background_3"; //music 1 - ACDC
+			break;
+		case 1:
+			song = "Background_1"; //music 3 - Boom Boom
+			break;
+		case 2:
+			song = "Background_2"; //music 2 - Bang Bang
+			break;
+		case 3:
+			song = "Background_0";//music 0 - dark music
+			break;
+		}
+
+
+		//controlling music with 'M' key
+		if (SwinGame.KeyTyped (KeyCode.vk_m)) {
+
+			SwinGame.PlayMusic (GameResources.GameMusic (song)); //using random number to switch between music
+		}
+
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
 			SwinGame.ResumeTimer (GameTimer);
