@@ -22,8 +22,9 @@ static class DiscoveryController
 	{
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
-		}
+			SwinGame.ResumeTimer (GameTimer);
 
+		}
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			DoAttack();
 		}
@@ -51,6 +52,12 @@ static class DiscoveryController
 		}
 	}
 
+public static Timer GameTimer = SwinGame.CreateTimer ();
+public static uint _time;
+public static string s;
+public static int x = 0;
+public static uint min = 0;
+
 	/// <summary>
 	/// Draws the game during the attack phase.
 	/// </summary>s
@@ -60,6 +67,12 @@ static class DiscoveryController
 		const int SHOTS_TOP = 157;
 		const int HITS_TOP = 206;
 		const int SPLASH_TOP = 256;
+
+		if (x == 0) {
+			SwinGame.ResetTimer (GameTimer);
+			SwinGame.StartTimer (GameTimer);
+			x++;
+		}
 
 		if ((SwinGame.KeyDown(KeyCode.vk_LSHIFT) | SwinGame.KeyDown(KeyCode.vk_RSHIFT)) & SwinGame.KeyDown(KeyCode.vk_c)) {
 			UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, true);
@@ -75,6 +88,20 @@ static class DiscoveryController
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
 		//To Show the value of the remaining enemy's ships on screens
 		SwinGame.DrawText (GameController.remainingShip.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, 306);
+		s = _time.ToString ();
+		_time = SwinGame.TimerTicks (GameTimer) / 1000;
+
+		SwinGame.DrawTextLines("Time: " +s, Color.Blue, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, (SwinGame.ScreenWidth()/2)-450, 94, 400, 15);
+		if (_time == 300)
+		{
+			SwinGame.DrawTextLines("Click the mouse to Exit    ", Color.Yellow, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignRight, 0, 550, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.DrawTextLines("TIME UP!!!", Color.Yellow, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.PauseTimer (GameTimer);
+			if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
+				SwinGame.ResetTimer (GameTimer);
+				GameController.AddNewState(GameState.Quitting);
+			}
+		}
 	}
 
 }
