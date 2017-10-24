@@ -43,8 +43,8 @@ static class MenuController
 	};
 	private const int MENU_TOP = 575;
 	private const int MENU_LEFT = 30;
-	private const int MENU_GAP = 0;
-	private const int BUTTON_WIDTH = 75;
+	private const int MENU_GAP = 15;
+	private const int BUTTON_WIDTH = 90;
 	private const int BUTTON_HEIGHT = 15;
 	private const int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
 
@@ -60,6 +60,7 @@ static class MenuController
     private const int MAIN_MENU_HOWTOPLAY_BUTTON = 3;
 	private const int MAIN_MENU_MUSIC_BUTTON = 4; //TRYING TO ADD MUSIC BUTTON INTO MAIN MENU
     private const int MAIN_MENU_QUIT_BUTTON = 5;
+
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
@@ -177,11 +178,11 @@ static class MenuController
 	/// </summary>
 	public static void DrawMainMenu()
 	{
-		//Clears the Screen to Black
-		//SwinGame.DrawText("Main Menu", Color.White, Game("ArialLarge"), 50, 50)
+        //Clears the Screen to Black
+        //SwinGame.DrawText("Main Menu", Color.White, Game("ArialLarge"), 50, 50)
 
-		DrawButtons(MAIN_MENU);
-	}
+        DrawButtons(MAIN_MENU);
+    }
 
 	/// <summary>
 	/// Draws the Game menu to the screen

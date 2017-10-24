@@ -11,7 +11,10 @@ public static class GameResources
 	private static void LoadFonts ()
 	{
 		NewFont ("ArialLarge", "arial.ttf", 80);
-		NewFont ("Courier", "cour.ttf", 14);
+        NewFont("ArialHeading1", "arial.ttf", 40);
+        NewFont ("ArialHeading2", "arial.ttf", 25);
+        NewFont("ArialHeading3", "arial.ttf", 15);
+        NewFont ("Courier", "cour.ttf", 14);
 		NewFont ("CourierSmall", "cour.ttf", 8);
 		NewFont ("Menu", "ffaccess.ttf", 8);
 	}
