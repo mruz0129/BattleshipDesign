@@ -22,14 +22,15 @@ static class DiscoveryController
 	/// Escape opens the game menu. Clicking the mouse will
 	/// attack a location.
 	/// </remarks>
-	public static void HandleDiscoveryInput()
+	public static void HandleDiscoveryInput ()
 	{
 		//generate random number to randomize the music switching
 		int numero = RandNum (0, 4);
 		string song = "";
 
+
 		switch (numero) {
-		case 0: 
+		case 0:
 			song = "Background_3"; //music 1 - ACDC
 			break;
 		case 1:
@@ -48,6 +49,11 @@ static class DiscoveryController
 		if (SwinGame.KeyTyped (KeyCode.vk_m)) {
 
 			SwinGame.PlayMusic (GameResources.GameMusic (song)); //using random number to switch between music
+		}
+
+		if (SwinGame.KeyTyped (KeyCode.vk_n)) {
+
+			SwinGame.StopMusic ();
 		}
 
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
@@ -124,8 +130,8 @@ public static uint min = 0;
 		SwinGame.DrawTextLines("Time: " +s, Color.Blue, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, (SwinGame.ScreenWidth()/2)-450, 94, 400, 15);
 		if (_time == 300)
 		{
-			SwinGame.DrawTextLines("Click the mouse to Exit    ", Color.Yellow, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignRight, 0, 550, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
-			SwinGame.DrawTextLines("TIME UP!!!", Color.Yellow, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.DrawTextLines("Click the mouse to Exit    ", Color.Yellow, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignRight, 0, 755, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+			SwinGame.DrawTextLines("TIME UP!!!", Color.Yellow, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 150, 375, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 			SwinGame.PauseTimer (GameTimer);
 			if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 				SwinGame.ResetTimer (GameTimer);

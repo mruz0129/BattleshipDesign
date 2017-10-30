@@ -15,4 +15,5 @@ public enum ShipName
 	Destroyer = 3,
 	Battleship = 4,
 	AircraftCarrier = 5
+	//UltimateDestroyer = 6
 }

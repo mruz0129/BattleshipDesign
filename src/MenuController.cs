@@ -25,7 +25,7 @@ static class MenuController
 			"PLAY",
 			"SETUP",
 			"SCORES",
-            "HOWTOPLAY",
+            "HOW2PLAY",
 			"CLICK ME!",
             "QUIT"
 		},
@@ -41,11 +41,11 @@ static class MenuController
 		}
 
 	};
-	private const int MENU_TOP = 575;
-	private const int MENU_LEFT = 30;
-	private const int MENU_GAP = 0;
-	private const int BUTTON_WIDTH = 75;
-	private const int BUTTON_HEIGHT = 15;
+	private const int MENU_TOP = 747;
+	private const int MENU_LEFT = 170;
+	private const int MENU_GAP = 20;
+	private const int BUTTON_WIDTH = 100;
+	private const int BUTTON_HEIGHT = 20;
 	private const int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
 
 	private const int TEXT_OFFSET = 0;
@@ -148,6 +148,11 @@ static class MenuController
 			SwinGame.PlayMusic (GameResources.GameMusic (song)); //using random number to switch between music
 		}
 
+		if (SwinGame.KeyTyped (KeyCode.vk_n)) { //keyboard key 'N' mutes the music
+
+			SwinGame.StopMusic ();
+		}
+
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.EndCurrentState();
 			return true;
@@ -238,7 +243,7 @@ static class MenuController
 		for (i = 0; i <= _menuStructure[menu].Length - 1; i++) {
 			int btnLeft = 0;
 			btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
-			//SwinGame.FillRectangle(Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT)
+			//SwinGame.FillRectangle (Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 			SwinGame.DrawTextLines(_menuStructure[menu][i], MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
 
 			if (SwinGame.MouseDown(MouseButton.LeftButton) & IsMouseOverMenu(i, level, xOffset)) {

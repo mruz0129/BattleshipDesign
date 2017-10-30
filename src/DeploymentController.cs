@@ -45,6 +45,38 @@ static class DeploymentController
 	/// </remarks>
 	public static void HandleDeploymentInput()
 	{
+
+		//generate random number to randomize the music switching
+		int numero = DiscoveryController.RandNum (0, 4);
+		string song = "";
+
+		switch (numero) {
+		case 0:
+			song = "Background_3"; //music 1 - ACDC
+			break;
+		case 1:
+			song = "Background_1"; //music 3 - Boom Boom
+			break;
+		case 2:
+			song = "Background_2"; //music 2 - Bang Bang
+			break;
+		case 3:
+			song = "Background_0";//music 0 - dark music
+			break;
+		}
+
+
+		//controlling music with 'M' key
+		if (SwinGame.KeyTyped (KeyCode.vk_m)) {
+
+			SwinGame.PlayMusic (GameResources.GameMusic (song)); //using random number to switch between music
+		}
+
+		if (SwinGame.KeyTyped (KeyCode.vk_n)) { //keyboard key 'N' mutes the music
+
+			SwinGame.StopMusic ();
+		}
+
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE))
 		{
 			GameController.AddNewState(GameState.ViewingGameMenu);
@@ -83,7 +115,7 @@ static class DeploymentController
 			}
 			else if (UtilityFunctions.IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT))
 			{
-				_currentDirection = Direction.LeftRight;
+				_currentDirection = Direction.UpDown;
 			}
 			else if (UtilityFunctions.IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT))
 			{
@@ -113,7 +145,7 @@ static class DeploymentController
 		//Calculate the row/col clicked
 		int row = 0;
 		int col = 0;
-		row = Convert.ToInt32(Math.Floor((mouse.Y) / (UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
+		row = Convert.ToInt32(Math.Floor((mouse.Y - UtilityFunctions.FIELD_TOP) / (UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
 		col = Convert.ToInt32(Math.Floor((mouse.X - UtilityFunctions.FIELD_LEFT) / (UtilityFunctions.CELL_WIDTH + UtilityFunctions.CELL_GAP)));
 
 		if (row >= 0 & row < GameController.HumanPlayer.PlayerGrid.Height)
@@ -166,7 +198,7 @@ static class DeploymentController
 				if (sn == _selectedShip)
 				{
 					SwinGame.DrawBitmap(GameResources.GameImage("SelectedShip"), SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT);
-					//    SwinGame.FillRectangle(Color.LightBlue, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)
+					//SwinGame.FillRectangle (Color.LightBlue, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT);
 					//Else
 					//    SwinGame.FillRectangle(Color.Gray, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)
 				}

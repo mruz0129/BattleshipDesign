@@ -10,13 +10,12 @@ using SwinGameSDK;
 /// </summary>
 static class UtilityFunctions
 {
-	public const int FIELD_TOP = 122;
-	public const int FIELD_LEFT = 349;
-	public const int FIELD_WIDTH = 418;
+	public const int FIELD_TOP = 122;//grid value - do not change
+	public const int FIELD_LEFT = 349;//grid value - do not change
+	public const int FIELD_WIDTH = 627;//grid value - initial 418
+	public const int FIELD_HEIGHT = 627;//grid value
 
-	public const int FIELD_HEIGHT = 418;
-
-	public const int MESSAGE_TOP = 548;
+	public const int MESSAGE_TOP = 755 ; // display the hit/miss msg
 	public const int CELL_WIDTH = 40;
 	public const int CELL_HEIGHT = 40;
 
@@ -88,10 +87,10 @@ static class UtilityFunctions
 	/// <param name="thePlayer">the player to show the ships of</param>
 	public static void DrawSmallField(ISeaGrid grid, Player thePlayer)
 	{
-		const int SMALL_FIELD_LEFT = 39;
-		const int SMALL_FIELD_TOP = 373;
-		const int SMALL_FIELD_WIDTH = 166;
-		const int SMALL_FIELD_HEIGHT = 166;
+		const int SMALL_FIELD_LEFT = 39;//small grid value
+		const int SMALL_FIELD_TOP = 373;//small grid value
+		const int SMALL_FIELD_WIDTH = 249;//small grid value -initiaa 166
+		const int SMALL_FIELD_HEIGHT = 249;//small grid value
 		const int SMALL_FIELD_CELL_WIDTH = 13;
 		const int SMALL_FIELD_CELL_HEIGHT = 13;
 		const int SMALL_FIELD_CELL_GAP = 4;
@@ -117,17 +116,17 @@ static class UtilityFunctions
 	private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight,
 	int cellGap)
 	{
-		//SwinGame.FillRectangle(Color.Blue, left, top, width, height)
+		//SwinGame.FillRectangle (Color.Blue, left, top, width, height);
 
 		int rowTop = 0;
 		int colLeft = 0;
 
 		//Draw the grid
-		for (int row = 0; row <= 9; row++)
+		for (int row = 0; row <= 14; row++)
 		{
 			rowTop = top + (cellGap + cellHeight) * row;
 
-			for (int col = 0; col <= 9; col++)
+			for (int col = 0; col <= 14; col++)
 			{
 				colLeft = left + (cellGap + cellWidth) * col;
 
@@ -268,7 +267,7 @@ static class UtilityFunctions
                 break;
         }
 
-        SwinGame.DrawFramerate(675, 585, GameResources.GameFont("CourierSmall"));
+        SwinGame.DrawFramerate(850, 780, GameResources.GameFont("CourierSmall"));
 	}
 
 	public static void AddExplosion(int row, int col)
