@@ -56,11 +56,31 @@ static class DiscoveryController
 			SwinGame.StopMusic ();
 		}
 
+		if (SwinGame.KeyTyped (KeyCode.vk_F5))
+		{
+			SwinGame.ToggleFullScreen();
+		}
+
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
+		}
+
+		if (SwinGame.KeyTyped (KeyCode.vk_p)) 
+		{
+			SwinGame.PauseTimer (GameTimer);
+		}
+
+		if (SwinGame.KeyTyped (KeyCode.vk_l)) 
+		{
 			SwinGame.ResumeTimer (GameTimer);
+		}
+
+		if (SwinGame.KeyTyped (KeyCode.vk_q)) 
+		{
+			GameController.EndCurrentState();
 
 		}
+
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			DoAttack();
 		}
@@ -127,7 +147,7 @@ public static uint min = 0;
 		s = _time.ToString ();
 		_time = SwinGame.TimerTicks (GameTimer) / 1000;
 
-		SwinGame.DrawTextLines("Time: " +s, Color.Blue, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, (SwinGame.ScreenWidth()/2)-450, 94, 400, 15);
+		SwinGame.DrawTextLines("Time: " +s, Color.LimeGreen, Color.Transparent, GameResources.GameFont("CourierMedium"), FontAlignment.AlignCenter, (SwinGame.ScreenWidth()/2)-450, 94, 400, 100);
 		if (_time == 300)
 		{
 			SwinGame.DrawTextLines("Click the mouse to Exit    ", Color.Yellow, Color.Transparent, GameResources.GameFont("Menu"), FontAlignment.AlignRight, 0, 755, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());

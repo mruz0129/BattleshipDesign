@@ -155,6 +155,11 @@ static class MenuController
 			SwinGame.StopMusic ();
 		}
 
+		if (SwinGame.KeyTyped (KeyCode.vk_F5))
+		{
+			SwinGame.ToggleFullScreen();
+		}
+
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.EndCurrentState();
 			return true;
