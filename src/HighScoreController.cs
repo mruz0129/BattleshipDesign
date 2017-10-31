@@ -19,6 +19,11 @@ static class HighScoreController
 	/// The score structure is used to keep the name and
 	/// score of the top players together.
 	/// </summary>
+
+	//variable for storing high score holder name and score
+	public static string highscoreName;
+	public static int highscoreValue;
+
 	private struct Score : IComparable
 	{
 		public string Name;
@@ -134,6 +139,11 @@ static class HighScoreController
 			} else {
 				SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			}
+
+			//get the highest score holder's name and score
+			s = _Scores [0];
+			highscoreName = s.Name;
+			highscoreValue = s.Value;
 		}
 	}
 

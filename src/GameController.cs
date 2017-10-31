@@ -257,6 +257,9 @@ public static class GameController
 		_theGame.AddDeployedPlayer(_human);
 		_theGame.AddDeployedPlayer(_ai);
 
+		//method called for reading the highscore
+		HighScoreController.DrawHighScores ();
+
 		SwitchState(GameState.Discovering);
 	}
 

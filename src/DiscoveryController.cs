@@ -144,6 +144,10 @@ public static uint min = 0;
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
 		//To Show the value of the remaining enemy's ships on screens
 		SwinGame.DrawText (GameController.remainingShip.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, 306);
+
+		//Print the high score holder's name and score on screens
+		SwinGame.DrawText (HighScoreController.highscoreName + " " + HighScoreController.highscoreValue, Color.White, GameResources.GameFont ("Courier"), 575, 85);
+
 		s = _time.ToString ();
 		_time = SwinGame.TimerTicks (GameTimer) / 1000;
 
