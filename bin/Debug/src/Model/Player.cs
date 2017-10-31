@@ -231,8 +231,8 @@ public class Player : IEnumerable<Ship>
 			do
 			{
 				int dir = _Random.Next(2);
-				int x = _Random.Next(0, 11);
-				int y = _Random.Next(0, 11);
+				int x = _Random.Next(0, 15);
+				int y = _Random.Next(0, 15);
 
 
 				if (dir == 0)

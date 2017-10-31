@@ -21,7 +21,7 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	//This is where the value enemy's remaining ships being stored. 
-	public static int remainingShip = 5;
+	public static int remainingShip = 6;
 
 	private static AIOption _aiSetting;
 	/// <summary>

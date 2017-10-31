@@ -38,8 +38,8 @@ public static class GameResources
 
 		//Ships
 		int i = 0;
-		for (i = 1; i <= 5; i++) {
-			NewImage ("ShipLR" + i, "ship_deploy_horiz_" + i + ".png");
+		for (i = 1; i <= 6; i++) {
+			NewImage ("ShipLR" + i, "ship_deploy_horiz_" + i + ".png"); //to add ship image
 			NewImage ("ShipUD" + i, "ship_deploy_vert_" + i + ".png");
 		}
 
@@ -188,7 +188,7 @@ public static class GameResources
 		const int ANI_V_CELL_COUNT = 6;
 		const int ANI_CELL_COUNT = 11;
 
-		Audio.PlaySoundEffect (_StartSound);
+		//Audio.PlaySoundEffect (_StartSound);
 		SwinGame.Delay (200);
 
 		int i = 0;

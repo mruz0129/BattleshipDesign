@@ -1,4 +1,5 @@
 10
+GF,231
 Testing High Score,107
 AAA,100
 BBB,90
@@ -6,6 +7,5 @@ CCC,80
 DDD,70
 EEE,60
 FFF,50
+RETARD,44
 GGG,40
-HHH,30
-III,20
