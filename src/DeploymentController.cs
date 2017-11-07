@@ -35,15 +35,17 @@ static class DeploymentController
 	private static Direction _currentDirection = Direction.UpDown;
 
 	private static ShipName _selectedShip = ShipName.Tug;
-	/// <summary>
-	/// Handles user input for the Deployment phase of the game.
-	/// </summary>
-	/// <remarks>
-	/// Involves selecting the ships, deloying ships, changing the direction
-	/// of the ships to add, randomising deployment, end then ending
-	/// deployment
-	/// </remarks>
-	public static void HandleDeploymentInput()
+
+
+    /// <summary>
+    /// Handles user input for the Deployment phase of the game.
+    /// </summary>
+    /// <remarks>
+    /// Involves selecting the ships, deloying ships, changing the direction
+    /// of the ships to add, randomising deployment, end then ending
+    /// deployment
+    /// </remarks>
+    public static void HandleDeploymentInput()
 	{
 
 		//generate random number to randomize the music switching

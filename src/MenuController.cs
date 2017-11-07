@@ -71,13 +71,15 @@ static class MenuController
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
 
 	private const int GAME_MENU_QUIT_BUTTON = 2;
-	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 
-	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
-	/// <summary>
-	/// Handles the processing of user input when the main menu is showing
-	/// </summary>
-	public static void HandleMainMenuInput()
+	private static Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+
+	private static Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
+
+    /// <summary>
+    /// Handles the processing of user input when the main menu is showing
+    /// </summary>
+    public static void HandleMainMenuInput()
 	{
 		HandleMenuInput(MAIN_MENU, 0, 0);
 	}
@@ -160,7 +162,47 @@ static class MenuController
 			SwinGame.ToggleFullScreen();
 		}
 
-		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
+        if (SwinGame.KeyTyped(KeyCode.vk_r))
+        {
+            SwinGame.StopMusic();
+            GameResources.FreeResources();
+            GameResources.LoadResources("_red");
+            MENU_COLOR = SwinGame.RGBAColor(250, 0, 0, 255);
+            HIGHLIGHT_COLOR = SwinGame.RGBAColor(240, 20, 20, 255);
+            UtilityFunctions.SMALL_SEA1 = SwinGame.RGBAColor(54, 0, 1, 255);
+            UtilityFunctions.SMALL_HIT1 = SwinGame.RGBAColor(0, 225, 0, 255);
+            UtilityFunctions.LARGE_HIT1 = SwinGame.RGBAColor(0, 225, 0, 255);
+            UtilityFunctions.SMALL_MISS1 =  SwinGame.RGBAColor(207, 0, 3, 255);
+            UtilityFunctions.LARGE_MISS1 = SwinGame.RGBAColor(207, 0, 3, 255);
+            UtilityFunctions.OUTLINE_COLOR1 = SwinGame.RGBAColor(102, 0, 1, 255);
+            GameController.HandleUserInput();
+            GameController.DrawScreen();
+        }
+
+        if (SwinGame.KeyTyped(KeyCode.vk_b))
+        {
+            SwinGame.StopMusic();
+            GameResources.FreeResources();
+            GameResources.LoadResources("");
+            MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+            HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
+            UtilityFunctions.SMALL_SEA1 = SwinGame.RGBAColor(6, 60, 94, 255);
+            UtilityFunctions.SMALL_HIT1 = SwinGame.RGBAColor(169, 24, 37, 255);
+            UtilityFunctions.LARGE_HIT1 = SwinGame.RGBAColor(252, 2, 3, 255);
+            UtilityFunctions.SMALL_MISS1 = SwinGame.RGBAColor(1, 147, 220, 255);
+            UtilityFunctions.LARGE_MISS1 = SwinGame.RGBAColor(1, 147, 220, 255);
+            UtilityFunctions.OUTLINE_COLOR1 = SwinGame.RGBAColor(5, 55, 88, 255);
+            GameController.HandleUserInput();
+            GameController.DrawScreen();
+        }
+
+        if (SwinGame.KeyTyped(KeyCode.vk_p))
+        {
+            GameController.StartGame();
+            return true;
+        }
+
+        if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.EndCurrentState();
 			return true;
 		}

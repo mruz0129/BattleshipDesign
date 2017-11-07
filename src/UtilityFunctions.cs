@@ -22,17 +22,17 @@ static class UtilityFunctions
 	public const int CELL_GAP = 2;
 
 	public const int SHIP_GAP = 3;
-	private static readonly Color SMALL_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
+	private static Color SMALL_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
 	private static readonly Color SMALL_SHIP = Color.Gray;
-	private static readonly Color SMALL_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
+	private static Color SMALL_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
-	private static readonly Color SMALL_HIT = SwinGame.RGBAColor(169, 24, 37, 255);
-	private static readonly Color LARGE_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
-	private static readonly Color LARGE_SHIP = Color.Gray;
-	private static readonly Color LARGE_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
+	private static Color SMALL_HIT = SwinGame.RGBAColor(169, 24, 37, 255);
+	private static Color LARGE_SEA = SwinGame.RGBAColor(6, 60, 94, 255);
+    private static readonly Color LARGE_SHIP = Color.Gray;
+	private static Color LARGE_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
-	private static readonly Color LARGE_HIT = SwinGame.RGBAColor(252, 2, 3, 255);
-	private static readonly Color OUTLINE_COLOR = SwinGame.RGBAColor(5, 55, 88, 255);
+	private static Color LARGE_HIT = SwinGame.RGBAColor(252, 2, 3, 255);
+	private static Color OUTLINE_COLOR = SwinGame.RGBAColor(5, 55, 88, 255);
 	private static readonly Color SHIP_FILL_COLOR = Color.Gray;
 	private static readonly Color SHIP_OUTLINE_COLOR = Color.White;
 
@@ -228,10 +228,17 @@ static class UtilityFunctions
 		set { _message = value; }
 	}
 
-	/// <summary>
-	/// Draws the message to the screen
-	/// </summary>
-	public static void DrawMessage()
+    public static Color SMALL_SEA1 { get => SMALL_SEA; set => SMALL_SEA = value; }
+    public static Color SMALL_MISS1 { get => SMALL_MISS; set => SMALL_MISS = value; }
+    public static Color SMALL_HIT1 { get => SMALL_HIT; set => SMALL_HIT = value; }
+    public static Color LARGE_MISS1 { get => LARGE_MISS; set => LARGE_MISS = value; }
+    public static Color LARGE_HIT1 { get => LARGE_HIT; set => LARGE_HIT = value; }
+    public static Color OUTLINE_COLOR1 { get => OUTLINE_COLOR; set => OUTLINE_COLOR = value; }
+
+    /// <summary>
+    /// Draws the message to the screen
+    /// </summary>
+    public static void DrawMessage()
 	{
 		SwinGame.DrawText(Message, MESSAGE_COLOR, GameResources.GameFont("Courier"), FIELD_LEFT, MESSAGE_TOP);
 	}
@@ -282,7 +289,8 @@ static class UtilityFunctions
 
 
 	private static List<Sprite> _Animations = new List<Sprite>();
-	private static void AddAnimation(int row, int col, string image)
+
+    private static void AddAnimation(int row, int col, string image)
 	{
 		Sprite s = default(Sprite);
 		Bitmap imgObj = default(Bitmap);
