@@ -228,12 +228,30 @@ static class UtilityFunctions
 		set { _message = value; }
 	}
 
-    public static Color SMALL_SEA1 { get => SMALL_SEA; set => SMALL_SEA = value; }
-    public static Color SMALL_MISS1 { get => SMALL_MISS; set => SMALL_MISS = value; }
-    public static Color SMALL_HIT1 { get => SMALL_HIT; set => SMALL_HIT = value; }
-    public static Color LARGE_MISS1 { get => LARGE_MISS; set => LARGE_MISS = value; }
-    public static Color LARGE_HIT1 { get => LARGE_HIT; set => LARGE_HIT = value; }
-    public static Color OUTLINE_COLOR1 { get => OUTLINE_COLOR; set => OUTLINE_COLOR = value; }
+	public static Color SMALL_SEA1 {
+		get { return SMALL_SEA; }
+		set { SMALL_SEA = value; }
+	}
+	public static Color SMALL_MISS1 {
+		get { return SMALL_MISS; }
+		set { SMALL_MISS = value; }
+	}
+	public static Color SMALL_HIT1 {
+		get { return SMALL_HIT; }
+		set { SMALL_HIT = value; }
+	}
+	public static Color LARGE_MISS1 {
+		get { return LARGE_MISS; }
+		set { LARGE_MISS = value; }
+	}
+	public static Color LARGE_HIT1 {
+		get { return LARGE_HIT; }
+		set { LARGE_HIT = value; }
+	}
+	public static Color OUTLINE_COLOR1 {
+		get { return OUTLINE_COLOR; }
+		set { OUTLINE_COLOR = value; }
+	}
 
     /// <summary>
     /// Draws the message to the screen
